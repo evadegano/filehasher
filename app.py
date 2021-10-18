@@ -6,7 +6,7 @@ import pandas as pd
 
 
 def main():
-  folder_output = "."
+  folder_output = "/Users/evadegano/Desktop/GPE"
 
   # add an a title to the app
   st.title("File Hash")
