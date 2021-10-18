@@ -6,18 +6,20 @@ import pandas as pd
 
 
 def main():
-  folder_output = "/Users/evadegano/Desktop/GPE"
-
   # add an a title to the app
   st.title("File Hash")
 
-  targets = [
-          "smj",
-          "dpam",
-      ]
+  # ask user for output folder 
+  folder_output = st.text_input("folder destination", "~/Downloads")
 
   # add a file picker
   uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
+
+  # check whether file is for DPAM or SMJ
+  targets = [
+    "smj",
+    "dpam",
+  ]
 
   if st.button("Hash"):
     if uploaded_file is not None:
@@ -44,7 +46,6 @@ def my_hash(uploaded_file, target_output):
 
   # export hashed csv
   df.to_csv(target_output, index = False)
-
 
 
 if __name__ == "__main__":
