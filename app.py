@@ -25,7 +25,8 @@ def main():
     if uploaded_file is not None:
       for target in targets:
         if target in uploaded_file.name.lower():
-            target_output = os.path.join(folder_output, f"{target}_init.csv")
+            #target_output = os.path.join(folder_output, f"{target}_init.csv")
+            target_output = folder_output
             my_hash(uploaded_file, target_output)
 
 
