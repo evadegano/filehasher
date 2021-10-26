@@ -19,7 +19,7 @@ def main():
 
 # hash file data
 def my_hash(uploaded_file):
-  df = pd.read_csv(uploaded_file)
+  df = pd.read_csv(uploaded_file, encoding='latin-1')
 
   df.columns = ["md5"]
 
