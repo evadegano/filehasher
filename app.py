@@ -2,6 +2,7 @@ import streamlit as st
 import base64
 import hashlib
 import pandas as pd
+from pandas.errors import ParserError
 
 
 
@@ -19,7 +20,10 @@ def main():
 
 # hash file data
 def my_hash(uploaded_file):
-  df = pd.read_csv(uploaded_file, encoding='latin-1')
+  try:
+    df = pd.read_csv(uploaded_file, encoding='latin-1')
+  except ParserError:
+    df = pd.read_csv(uploaded_file, encoding='latin-1', sep=";")
 
   df.columns = ["md5"]
 
