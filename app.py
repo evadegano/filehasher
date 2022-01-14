@@ -23,6 +23,8 @@ def my_hash(uploaded_file):
 
   df.columns = ["md5"]
 
+  # filter out rows with NaN values
+  df = df.loc[df.md5.notnull()]
   # filter out rows that don't contain an email address
   df = df.loc[df.md5.str.contains("@")]
 
