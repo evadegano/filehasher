@@ -8,6 +8,9 @@ The app is available [here](https://share.streamlit.io/evanina/file-hash/main/ap
 * [Technologies](#technologies)
 * [Features](#features)
 
+## Scope
+FileHasher was created for clients at my last position, but can be used by anyone who needs to hash email addresses in md5.
+
 ## Technologies
 This project is built with:
 * Python 3.9.7
