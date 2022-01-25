@@ -1,6 +1,8 @@
 # FileHasher
 FileHasher is a simple Streamlit web app made to hash email databases into md5.
 
+The app is available [here](https://share.streamlit.io/evanina/file-hash/main/app.py).
+
 ## Table of contents
 * [Scope](#scope)
 * [Technologies](#technologies)
