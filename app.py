@@ -8,7 +8,7 @@ from pandas.errors import ParserError
 
 def main():
   # add an a title to the app
-  st.title("Yo")
+  st.title("FileHasher")
 
   # add a file picker
   uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
