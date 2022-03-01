@@ -8,7 +8,7 @@ from pandas.errors import ParserError
 
 def main():
   # add an a title to the app
-  st.title("FileHasher")
+  st.title("Yo")
 
   # add a file picker
   uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
@@ -37,10 +37,10 @@ def my_hash(uploaded_file, col_name, hashingAlgo):
   df = df.loc[df[col_name].str.contains("@")]
 
   # clean row
-  df[[col_name]] = df[col_name].str.lower().str.strip()
+  df[col_name] = df[col_name].str.lower().str.strip()
 
   # hash row
-  df[[col_name]] = df[col_name].apply(lambda x: hashingAlgo(x.encode()).hexdigest())
+  df[col_name] = df[col_name].apply(lambda x: hashingAlgo(x.encode()).hexdigest())
 
   # export hashed csv
   csv = df.to_csv(index = False)
