@@ -13,34 +13,34 @@ def main():
   # add a file picker
   uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
 
-  if st.button("Hash in SHA256"):
-    if uploaded_file is not None:
-      my_hash(uploaded_file, "sha256", hashlib.sha256)
-
   if st.button("Hash in MD5"):
     if uploaded_file is not None:
-      my_hash(uploaded_file, "md5", hashlib.md5)
+      my_hash(uploaded_file)
+
+  if st.button("Hash in SHA256"):
+    if uploaded_file is not None:
+      my_hash(uploaded_file)
 
 
 # hash file data
-def my_hash(uploaded_file, col_name, hashingAlgo):
+def my_hash(uploaded_file):
   try:
     df = pd.read_csv(uploaded_file, encoding='latin-1')
   except ParserError:
     df = pd.read_csv(uploaded_file, encoding='latin-1', sep=";")
 
-  df.columns = [col_name]
+  df.columns = ["md5"]
 
   # filter out rows with NaN values
-  df = df.loc[df[col_name].notnull()]
+  df = df.loc[df.md5.notnull()]
   # filter out rows that don't contain an email address
-  df = df.loc[df[col_name].str.contains("@")]
+  df = df.loc[df.md5.str.contains("@")]
 
   # clean row
-  df[[col_name]] = df[col_name].str.lower().str.strip()
+  df["md5"] = df.md5.str.lower().str.strip()
 
   # hash row
-  df[[col_name]] = df[col_name].apply(lambda x: hashingAlgo(x.encode()).hexdigest())
+  df["md5"] = df.md5.apply(lambda x: hashlib.md5(x.encode()).hexdigest())
 
   # export hashed csv
   csv = df.to_csv(index = False)
