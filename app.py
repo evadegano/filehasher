@@ -8,12 +8,16 @@ from pandas.errors import ParserError
 
 def main():
   # add an a title to the app
-  st.title("File Hash")
+  st.title("FileHasher")
 
   # add a file picker
   uploaded_file = st.file_uploader("Upload CSV", type=['csv'])
 
-  if st.button("Hash"):
+  if st.button("Hash in MD5"):
+    if uploaded_file is not None:
+      my_hash(uploaded_file)
+
+  if st.button("Hash in SHA256"):
     if uploaded_file is not None:
       my_hash(uploaded_file)
 
